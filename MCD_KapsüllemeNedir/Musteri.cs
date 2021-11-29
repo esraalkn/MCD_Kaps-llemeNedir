@@ -33,7 +33,21 @@ namespace MCD_KapsüllemeNedir
 
 
         public string isim;
-        public string soyisim;
+        private string _soyisim;
+
+        public string Soyisim
+        {
+            get
+            {
+                return this._soyisim;
+
+            }
+            set
+            {
+                this._soyisim = value;
+                this.emailAdres = string.Format("{0}.{1}@hotmail.com", isim, _soyisim);
+            }
+        }
 
         //Class => Property
         private string emailAdres;
@@ -59,6 +73,61 @@ namespace MCD_KapsüllemeNedir
             return rnd.Next(10000, 90000);
 
 
+        }
+        //Ara Odev
+        public string _TcKimlikNo;
+        public string TcNo
+        {
+            
+            get
+            {
+                if (_TcKimlikNo != null)
+                {
+                    return this._TcKimlikNo.Substring(0, 3);
+                }
+                else
+                {
+                    return " ";
+                }
+               
+
+            }
+            set
+            {
+              
+                if (value.Length==11)
+                {
+                    bool bayrak = false;
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        bool karakterkontrol = char.IsNumber(value[i]);
+                        if (karakterkontrol)
+                        {
+                            //sayısal değer demektir...
+                        }
+                        else
+                        {
+                            bayrak = true;
+                            break;
+                        }
+                    }
+                    if (bayrak)
+                    {
+                        Console.WriteLine("TC kimlik numarası içindeki değerler sayısal olmalıdır .....");
+                    }
+                    else
+                    {
+                        this._TcKimlikNo = value;
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("TC kimlik numarası 11 hane olmalıdır.");
+                }
+               
+               
+            }
         }
     }
 }
