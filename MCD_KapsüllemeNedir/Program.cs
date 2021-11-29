@@ -24,6 +24,10 @@ namespace MCD_KapsüllemeNedir
             M1.EmailAdres = "Esra Alkan";
             Console.WriteLine(M1.EmailAdres);
 
+            //1.Field değer ataması yapılmasın ama değer okunabilsin
+            Console.WriteLine($"Müşteri Id değeri: {M1.ID.ToString()}");
+           // M1.ID = 10;
+
             Console.ReadKey();
         }
     }
